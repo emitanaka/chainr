@@ -1,0 +1,17 @@
+Package: chainr
+Title: Link data frames as a chain
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Emi",
+           family = "Tanaka",
+           role = c("aut", "cre"),
+           email = "dr.emi.tanaka@gmail.com",
+           comment = c(ORCID = "0000-0002-1455-259X"))
+Description: This is a tiny package provides tools to make a chain (a list of related data
+ frames) and manipulate using familiar dplyr verbs made for a chain. 
+License: GPL3 + file LICENSE
+Encoding: UTF-8
+Language: es
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
