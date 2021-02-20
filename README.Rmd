@@ -1,0 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# chainr
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+## `chain`
+
+When working with relational data, it's easier to think of data frames being chained together. You can for example create a `chain` list as below.
+
+```{r}
+library(chainr)
+vs_info <- data.frame(engine = c(0, 1), info = c("flat", "unknown"))
+cl <- chain(original = mtcars,
+            vs_dict = data.frame(vs = c(0, 1), engine = c("V-shaped", "Straight")),
+            vs_info = link(vs_info, original, .by = c(vs = "engine")))
+
+cl
+```
+
+Then you can apply some familiar `dplyr` verbs, however you have an additional argument to supply to reference which data frame.
+
+```{r, warning = FALSE, message = FALSE}
+library(dplyr)
+cl %>% 
+  select(starts_with("vs")) # select all data frame starting with "vs"
+
+cl %>% 
+  select(c(original, vs_dict), vs)
+```
+
