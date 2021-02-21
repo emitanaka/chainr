@@ -47,20 +47,3 @@ link <- function(.data, ..., .by = NULL) {
 }
 
 
-#' @importFrom dplyr select
-#' @export
-select.chain <- function(.chain, .df, ...) {
-  loc_data <- tidyselect::eval_select(rlang::enexpr(.df), .chain)
-  data_names <- names(loc_data)
-  subchain <- rlang::set_names(.chain[loc_data], data_names)
-  dots <- enquos(...)
-  if(length(dots) > 0L) {
-    for(aname in data_names) {
-      .data <- subchain[[aname]]
-      loc <- tidyselect::eval_select(rlang::expr(c(...)), .data)
-      subchain[[aname]] <- rlang::set_names(.data[loc], names(loc))
-    }
-  }
-  subchain
-}
-
