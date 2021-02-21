@@ -33,6 +33,7 @@ usa <- chain(
                               region = state.region),
       arrests = USArrests
     )
+str(usa)
 ```
 
 Then you can apply some familiar `dplyr` verbs, however you have an additional argument to supply to reference which dataset(s). 
@@ -51,6 +52,8 @@ usa %>%
 ```
 
 
-## SQL database
+## Other related works
 
 The approach in `chainr` is a really simple way of dealing with in-memory relational database. Alternatively, you can create a mock SQL database and work with it using `dbplyr`. 
+
+A chain is a simple list. A more general list manipulation can be found in `rlist`.
