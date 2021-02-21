@@ -53,4 +53,4 @@ usa %>%
 
 ## SQL database
 
-Thinking about it, this is the same concept as setting up a SQL database. 
+The approach in `chainr` is a really simple way of dealing with in-memory relational database. Alternatively, you can create a mock SQL database and work with it using `dbplyr`. 
