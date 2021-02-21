@@ -4,7 +4,7 @@
 \name{chainr-package}
 \alias{chainr}
 \alias{chainr-package}
-\title{chainr: Link data frames as a chain}
+\title{chainr: Working with relational database}
 \description{
 This is a tiny package provides tools to make a chain (a list of related data
  frames) and manipulate using familiar dplyr verbs made for a chain.

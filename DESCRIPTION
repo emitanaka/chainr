@@ -1,5 +1,5 @@
 Package: chainr
-Title: Link data frames as a chain
+Title: Working with relational database
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Emi",
@@ -22,3 +22,6 @@ Imports:
     tidyselect,
     dplyr,
     rlang
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
