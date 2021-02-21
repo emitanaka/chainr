@@ -98,6 +98,25 @@ usa %>%
 #>   ..$ region  : Factor w/ 4 levels "Northeast","South",..: 2 4 4 2 4 4 1 2 2 2 ...
 ```
 
+Technically chain can hold objects that are not data frames. A tiny
+difference to just using `list` is that it evaluates sequentially so you
+can refer to an element in the list defined in previous lines.
+
+``` r
+library(rsample)
+library(tidytuesdayR)
+set.seed(1)
+coffee <- chain(
+  data = tt_load(2020, week = 28)$coffee,
+  split = initial_split(data, prop = 0.8),
+  train = training(split),
+  test = testing(split),
+  folds = vfold_cv(train, v = 5)
+)
+#> 
+#>  Downloading file 1 of 1: `coffee_ratings.csv`
+```
+
 ## Other related works
 
 The approach in `chainr` is a really simple way of dealing with
