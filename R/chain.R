@@ -16,7 +16,8 @@
 #'
 #'
 #' @export
-chain <- function(..., .class = NULL) {
+chain <- function(..., .class = NULL, .return = c("list", "env")) {
+  .return <- match.arg(.return)
   dots <- enquos(...)
   dots_names <- names(dots)
   auto_named_dots <- names(enquos(..., .named = TRUE))
@@ -27,12 +28,31 @@ chain <- function(..., .class = NULL) {
 
   out <- list()
   for(i in seq_along(dots)) {
-    not_named <- (is.null(dots_names) || dots_names[i] == "")
-    name <- if (not_named) auto_named_dots[i] else dots_names[i]
-    out[[name]] <- eval_tidy(dots[[i]], out)
+      not_named <- (is.null(dots_names) || dots_names[i] == "")
+      name <- if (not_named) auto_named_dots[i] else dots_names[i]
+      out[[name]] <- eval_tidy(dots[[i]], out)
+  }
+  if(.return=="env") {
+    out <- new_environment(data = out)
   }
   class(out) <- c(.class, "chain", class(out))
   out
+}
+
+#' @export
+format.chain <- function(x, ...) {
+  if(is_environment(x)) {
+    out <- as.list(x)
+    attributes(out) <- attributes(x)
+  } else {
+    out <- x
+  }
+  out
+}
+
+#' @export
+print.chain <- function(x, ...) {
+  print.default(format(x))
 }
 
 
