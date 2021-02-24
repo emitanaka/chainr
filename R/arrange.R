@@ -6,7 +6,7 @@
 #'
 #' @importFrom dplyr arrange
 #' @export
-arrange.chain <- function(.chain, .dataset, ...) {
+arrange_in <- function(.chain, .dataset, ...) {
   .dataset <- enexpr(.dataset)
   anneal(.chain, !!.dataset, arrange, ..., .env = caller_env(n = 2))
 }
