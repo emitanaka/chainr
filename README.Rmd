@@ -41,7 +41,7 @@ Then you can apply some familiar `dplyr` verbs, however you have an additional a
 ```{r, warning = FALSE, message = FALSE}
 library(dplyr)
 usa %>% 
-  select(arrests, Murder) %>% 
+  select_in(arrests, Murder) %>% 
   str()
 ```
 

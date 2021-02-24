@@ -55,7 +55,7 @@ additional argument to supply to reference which dataset(s).
 ``` r
 library(dplyr)
 usa %>% 
-  select(arrests, Murder) %>% 
+  select_in(arrests, Murder) %>% 
   str()
 #> List of 3
 #>  $ state_stats:'data.frame': 50 obs. of  8 variables:
