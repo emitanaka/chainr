@@ -1,6 +1,6 @@
 #' @importFrom dplyr select
 #' @export
-select.chain <- function(.chain, .dataset, ...) {
+select_in <- function(.chain, .dataset, ...) {
   .dataset <- enexpr(.dataset)
   anneal(.chain, !!.dataset, select, ..., .env = caller_env(n = 2))
 }
