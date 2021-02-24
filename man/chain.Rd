@@ -4,7 +4,7 @@
 \alias{chain}
 \title{Link data frames as a chain}
 \usage{
-chain(..., .class = NULL)
+chain(..., .class = NULL, .return = c("list", "env"))
 }
 \arguments{
 \item{...}{A name-value pair where value is a data frame. The supplied
